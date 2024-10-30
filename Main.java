@@ -4,21 +4,19 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        //This print will be asking the user to put three numbers that they choose to input.
-        System.out.print("Please put three numbers of your choosing: ");
-        double num1 = input.nextDouble();
-        double num2 = input.nextDouble();
-        double num3 = input.nextDouble();
+        // This code makes a print that allows the users to input the subtotal first.
+        
+        System.out.print("Enter the subtotal: ");
+        double subtotal = input.nextDouble();
 
-        displaySortedNumbers(num1, num2, num3);
-    }
+        // This code makes a print that allows the users to input the gratuity rate second.
+        // It also contains the equation to find it as well.
+        
+        System.out.print("Enter the gratuity rate: ");
+        double gratuity = subtotal * input.nextDouble() / 100;
 
-    //This is the code that sorts out the numbers in order from least to greatest.
-    public static void displaySortedNumbers(double num1, double num2, double num3) {
-        double min = Math.min(num1, Math.min(num2, num3));
-        double max = Math.max(num1, Math.max(num2, num3));
-        double mid = num1 + num2 + num3 - min - max;
-
-        System.out.println("These are the numbers that have been sorted: " + min + ", " + mid + ", " + max);
+        //This code makes a print which shows what the gratuity is as well as the total.
+        
+        System.out.printf("The gratuity is $%.2f and total is $%.2f\n", gratuity, subtotal + gratuity);
     }
 }
