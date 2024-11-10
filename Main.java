@@ -1,41 +1,38 @@
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
-
-    //This is the code that figures out the array for the integers.
-    public static int average(int[] array) {
-        int sum = 0;
-        for (int num : array) {
-            sum += num;
-        }
-        return sum / array.length;
-    }
-
-    //This code will calculate the average amount of the double array.
-    public static double average(double[] array) {
-        double sum = 0.0;
-        for (double num : array) {
-            sum += num;
-        }
-        return sum / array.length;
-    }
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
- 
-        //This code will make a print for the user to enter 10 double values.
-        double[] values = new double[10];
-        System.out.println("Enter 10 double values:");
+        Scanner input = new Scanner(System.in);
 
+        //This code prompts the user to give 10 integers through a print.
+        int[] numbers = new int[10];
+        System.out.print("Enter ten numbers: ");
         for (int i = 0; i < 10; i++) {
-            values[i] = scanner.nextDouble();
+            numbers[i] = input.nextInt();
         }
 
-        double avg = average(values);
+        //This code will print out the results after the duplicates have been eliminated.
+        int[] distinctNumbers = eliminateDuplicates(numbers);
+        System.out.print("The distinct numbers are: ");
+        for (int number : distinctNumbers) {
+            System.out.print(number + " ");
+        }
+    }
 
-        //This code shows the averge of the values to the user in a print.
-        System.out.println("The average of the entered values is: " + avg);
-
-        scanner.close();
+    //This code is a way eliminate the duplicates.
+    public static int[] eliminateDuplicates(int[] list) {
+        Set<Integer> set = new HashSet<>();
+        for (int number : list) {
+            set.add(number);
+        }
+      
+        int[] result = new int[set.size()];
+        int index = 0;
+        for (int number : set) {
+            result[index++] = number;
+        }
+        return result;
     }
 }
