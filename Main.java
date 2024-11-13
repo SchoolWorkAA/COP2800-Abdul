@@ -1,38 +1,46 @@
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        //This code prompts the user to give 10 integers through a print.
-        int[] numbers = new int[10];
-        System.out.print("Enter ten numbers: ");
-        for (int i = 0; i < 10; i++) {
-            numbers[i] = input.nextInt();
-        }
+        //This print asks for the user's weight in pounds.
+        System.out.print("Enter weight in pounds: ");
+        double weight = input.nextDouble();
 
-        //This code will print out the results after the duplicates have been eliminated.
-        int[] distinctNumbers = eliminateDuplicates(numbers);
-        System.out.print("The distinct numbers are: ");
-        for (int number : distinctNumbers) {
-            System.out.print(number + " ");
-        }
-    }
+        //Then this print asks for the user's height converted to feet.
+        System.out.print("Enter height - feet: ");
+        int feet = input.nextInt();
 
-    //This code is a way eliminate the duplicates.
-    public static int[] eliminateDuplicates(int[] list) {
-        Set<Integer> set = new HashSet<>();
-        for (int number : list) {
-            set.add(number);
-        }
-      
-        int[] result = new int[set.size()];
-        int index = 0;
-        for (int number : set) {
-            result[index++] = number;
-        }
-        return result;
+        //This is the same print except it asks for the inches of their height.
+        System.out.print("Enter height - inches: ");
+        int inches = input.nextInt();
+
+        //This code will convert the feet the user entered for height into inches.
+        int totalInches = (feet * 12) + inches;
+
+        //This code will convert the user's weight from pounds into kilograms.
+        double weightInKilograms = weight * 0.45359237;
+
+        //After that, this code will turn inches into meters.
+        double heightInMeters = totalInches * 0.0254;
+
+        //This is the code that has the equation to calculate the user's BMI.
+        double bmi = weightInKilograms / (heightInMeters * heightInMeters);
+
+        //This code will print the result of the previous code to the user.
+        System.out.printf("Your BMI is %.2f\n", bmi);
+
+        //Finally, this code will figure out 
+        if (bmi < 18.5)
+            System.out.println("Underweight");
+        else if (bmi < 24.9)
+            System.out.println("Normal weight");
+        else if (bmi < 29.9)
+            System.out.println("Overweight");
+        else
+            System.out.println("Obese");
+
+        input.close();
     }
 }
