@@ -1,21 +1,21 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        final double CONVERSION_FACTOR = 1.609;
 
-        //Ask the user for a letter.
-        System.out.println("Please enter a letter: ");
-        char letter = input.next().charAt(0);
+        //This is the code to print the line that goes above the list.
+        System.out.println("-------------------------------------");
 
-        //Check if the letter is a vowel.
-        if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u' ||
-            letter == 'A' || letter == 'E' || letter == 'I' || letter == 'O' || letter == 'U') {
-            System.out.println(letter + " is a vowel.");
-        } else {
-            System.out.println(letter + " is a consonant.");
+        //This is the code that spaces the headers of Miles and Kilometers properly.
+        System.out.printf("%-15s%-15s%n", "Miles", "Kilometers");
+
+        //This is the code that figures out the miles to kilometers conversion.
+        for (int miles = 1; miles <= 10; miles++) {
+            double kilometers = miles * CONVERSION_FACTOR;
+            //This spaces the numbers so that they are aligned with their headers.
+            System.out.printf("%-15d%-15.3f%n", miles, kilometers);
         }
 
-        input.close();
+        //This is the line that goes below the entire list.
+        System.out.println("---------------------------------------");
     }
 }
