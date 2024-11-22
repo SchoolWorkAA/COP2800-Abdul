@@ -1,21 +1,24 @@
 public class Main {
+
     public static void main(String[] args) {
-        final double CONVERSION_FACTOR = 1.609;
+        double tuition = 10000; //This is the first tuition given in the assignment desc.
+        double rate = 0.05; //This is the 5 percent increase that is stated every year.
+        int years = 10;
 
-        //This is the code to print the line that goes above the list.
-        System.out.println("-------------------------------------");
-
-        //This is the code that spaces the headers of Miles and Kilometers properly.
-        System.out.printf("%-15s%-15s%n", "Miles", "Kilometers");
-
-        //This is the code that figures out the miles to kilometers conversion.
-        for (int miles = 1; miles <= 10; miles++) {
-            double kilometers = miles * CONVERSION_FACTOR;
-            //This spaces the numbers so that they are aligned with their headers.
-            System.out.printf("%-15d%-15.3f%n", miles, kilometers);
+        //This will figure out the tuition in 10 years from now, with this equation.
+        for (int i = 0; i < years; i++) {
+            tuition += tuition * rate;
         }
 
-        //This is the line that goes below the entire list.
-        System.out.println("---------------------------------------");
+        System.out.printf("Tuition after 10 years: $%.2f\n", tuition);
+
+        //This will find out the total cost in about 10 years, with this equation.
+        double totalCost = 0;
+        for (int i = 0; i < 4; i++) {
+            totalCost += tuition;
+            tuition += tuition * rate; //THis increases the tuition by 5% every year.
+        }
+
+        System.out.printf("Total cost for 4 years after the 10th year: $%.2f\n", totalCost);
     }
 }
